@@ -6,6 +6,9 @@ import DetailNewsPage from "./pages/detailNews";
 import SignUpPage from "./pages/signup";
 import SignInPage from "./pages/signin";
 import ProfilePage from "./pages/profile"
+import DetailProductPage from "./pages/detailProduct"
+
+
 // -----FRONT-END-------
 import AdminPage from "./pages/admin/admin-dashbroad";
 import AdminNews from "./pages/admin/news/admin-news";
@@ -13,6 +16,7 @@ import AdminNewsAdd from "./pages/admin/news/admin-news-add";
 import AdminNewsEdit from "./pages/admin/news/admin-news-edit";
 import AdminUsers from "./pages/admin/users/admin-users"
 import AdminUsersEdit from "./pages/admin/users/admin-users-edit"
+
 
 // -----BACK-END-------
 
@@ -62,6 +66,11 @@ router.on({
     "/news/:id": (value) =>{
         console.log(value.data.id);
         print(DetailNewsPage,value.data.id);
+        
+    },
+    "/products/:id": (value) =>{
+        console.log(value.data.id);
+        print(DetailProductPage,value.data.id);
         
     },
     "/signup": () => {

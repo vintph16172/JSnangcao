@@ -96,25 +96,25 @@ const Cart = {
     },
     afterRender() {
 
-        const modalSwitch = document.getElementById('modal-switch');
-        const modal = document.getElementById('modal');
-        const modalClose = document.getElementById('modal-close');
-        const modalClose2 = document.getElementById('modal-close2');
-        modalSwitch.addEventListener("click", function () {
+        // const modalSwitch = document.getElementById('modal-switch');
+        // const modal = document.getElementById('modal');
+        // const modalClose = document.getElementById('modal-close');
+        // const modalClose2 = document.getElementById('modal-close2');
+        // modalSwitch.addEventListener("click", function () {
 
-            modal.classList.remove('hidden')
+        //     modal.classList.remove('hidden')
 
-        });
-        modalClose.addEventListener("click", function () {
+        // });
+        // modalClose.addEventListener("click", function () {
 
-            modal.classList.add('hidden')
+        //     modal.classList.add('hidden')
 
-        });
-        modalClose2.addEventListener("click", function () {
+        // });
+        // modalClose2.addEventListener("click", function () {
 
-            modal.classList.add('hidden')
+        //     modal.classList.add('hidden')
 
-        });
+        // });
 
         
     }

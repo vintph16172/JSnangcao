@@ -10,9 +10,7 @@ const HomePage = {
             ${HeaderPage.render()}
         </div>
 
-        <div class="banner mt-4">
-            <img src="/img/banner lab1.png" alt="" class="w-full">
-        </div>
+        
 
         <div class="content">
             <div class="content1">
