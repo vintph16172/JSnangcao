@@ -7,6 +7,8 @@ import SignUpPage from "./pages/signup";
 import SignInPage from "./pages/signin";
 import ProfilePage from "./pages/profile"
 import DetailProductPage from "./pages/detailProduct"
+import CategoryPage from "./pages/category"
+
 
 
 // -----FRONT-END-------
@@ -63,16 +65,23 @@ router.on({
         print(ProductPage);
         
     },
+    "/products/:category": (value) =>{
+        console.log(value.data.category);
+        print(CategoryPage,value.data.category);
+        
+    },
+    "/products/detail/:id": (value) =>{
+        console.log(value.data.id);
+        console.log(value);
+        print(DetailProductPage,value.data.id);
+        
+    },
     "/news/:id": (value) =>{
         console.log(value.data.id);
         print(DetailNewsPage,value.data.id);
         
     },
-    "/products/:id": (value) =>{
-        console.log(value.data.id);
-        print(DetailProductPage,value.data.id);
-        
-    },
+    
     "/signup": () => {
         print(SignUpPage);
         
@@ -95,6 +104,7 @@ router.on({
         print(AdminNewsAdd);
     },
     "/admin/news/:id/edit": (value) => {
+        
         print(AdminNewsEdit,value.data.id);
     },
     "/admin/users": () => {

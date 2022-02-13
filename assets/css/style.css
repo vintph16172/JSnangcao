@@ -3610,7 +3610,7 @@ p.comment-form-cookies-consent {
     .shop-title .product-view-mode a:last-child {
       margin-left: 5px; }
 
-.shop-product-wrap.grid .product-list-item {
+.shop-product-wrap.flex .product-list-item {
   display: none; }
 .shop-product-wrap.list .col-12 {
   flex: 0 0 100%;

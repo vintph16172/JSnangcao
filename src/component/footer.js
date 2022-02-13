@@ -7,7 +7,7 @@ const FooterPage = {
                 <div class="order-content">
                     <div class="content-logo">
                         <a href="#">
-                            <img src="./assets/img/logo.png" alt="logo" class="img-logo" >
+                            <img src="../../assets/img/logo.png" alt="logo" class="img-logo" >
                             
                         </a>
                     </div>
@@ -29,7 +29,7 @@ const FooterPage = {
         <!-- link area ends -->
 
         <!-- footer area start -->
-        <footer class="padding-tb" style="background-image: url(assets/css/bg-image/footer-bg.jpg);">
+        <footer class="padding-tb" style="background-image: url(../../assets/css/bg-image/footer-bg.jpg);">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-12">

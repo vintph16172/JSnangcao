@@ -3,7 +3,7 @@
     {
       "id": "1",
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "./assets/img/blog-news1.png",
+      "img": "../../assets/img/blog-news1.png",
       "author":"vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
       
@@ -11,7 +11,7 @@
     {
       "id": "2",
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "./assets/img/blog-news2.png",
+      "img": "../../assets/img/blog-news2.png",
       "author":"vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
       
@@ -19,7 +19,7 @@
     {
       "id": "3",
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "./assets/img/blog-news3.png",
+      "img": "../../assets/img/blog-news3.png",
       "author":"vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
       
@@ -29,7 +29,7 @@
     {
       "id":"1",
       "name":"Bò Bít Tết",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -41,19 +41,19 @@
     {
       "id":"2",
       "name":"Bò Bít Tết 2",
-      "image":"./assets/img/menu1.png",
-      "category":"Steak",
+      "image":"../../assets/img/menu1.png",
+      "category":"Burger",
       "quantity":"28",
       "code":"FS511948218",
       "desc":"Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
-      "price":"200000",
+      "price":"300000",
       "sale":"20",
       "view":"777"
     },
     {
       "id":"3",
       "name":"Bò Bít Tết 3",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -65,7 +65,7 @@
     {
       "id":"4",
       "name":"Bò Bít Tết 4",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -77,7 +77,7 @@
     {
       "id":"5",
       "name":"Bò Bít Tết 5",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -89,7 +89,7 @@
     {
       "id":"6",
       "name":"Bò Bít Tết 6",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -101,7 +101,7 @@
     {
       "id":"7",
       "name":"Bò Bít Tết 7",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -113,7 +113,7 @@
     {
       "id":"8",
       "name":"Bò Bít Tết 8",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",
@@ -125,7 +125,7 @@
     {
       "id":"9",
       "name":"Bò Bít Tết 9",
-      "image":"./assets/img/menu1.png",
+      "image":"../../assets/img/menu1.png",
       "category":"Steak",
       "quantity":"28",
       "code":"FS511948218",

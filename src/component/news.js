@@ -21,6 +21,7 @@ const News = {
         }
         console.log(data2);
         console.log(data3);
+        
         return /* html */`
            
             <!-- banner section satrt here -->
@@ -174,7 +175,7 @@ const News = {
                     ${data2.map((product) =>/*html*/`
                     <div class="col-xl-3 col-md-6 col-12">
                         <div class="product-item">
-                            <a href="./products/${product.id}">
+                            <a href="/products/detail/${product.id}">
                                 <div class="product-thumb">
                                     <img src="${product.image}" alt="food-product">
                                     <span class="price">${product.sale}%</span>
@@ -218,7 +219,7 @@ const News = {
                     ${arrHotProduct.map((hotProduct) =>/*html*/`
                     <div class="col-xl-3 col-md-6 col-12">
                         <div class="product-item">
-                            <a href="./detail-product/${hotProduct.id}">
+                            <a href="/products/detail/${hotProduct.id}">
                                 <div class="product-thumb">
                                     <img src="${hotProduct.image}" alt="food-product">
                                     <span class="price">${hotProduct.sale}%</span>
@@ -1234,6 +1235,9 @@ const News = {
         // Get the element with id="defaultOpen" and click on it
         document.getElementById("defaultOpen").click();
         // for tabcontent js start //
+        // window.onload = function(){
+        //     document.getElementById("defaultOpen").click();
+        // }
 
 
     }

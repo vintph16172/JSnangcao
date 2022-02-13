@@ -2,45 +2,67 @@ import HeaderPage from "../component/header";
 import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
-import {  getAll } from "../api/product"
+import { getAll } from "../api/product"
 
-const ProductPage = {
-    async render(){
+const CategoryPage = {
+    async render(category) {
         const { data } = await getAll();
-        
+        const data2 = []
         console.log(data);
+
+        category.replace("%20", " ")
+
+        let checkPrice = category.search("&");
+        console.log(checkPrice);
+
+        console.log(category);
+
         const arrPrice = [
-            {min: 50000,max: 100000,price_quantity: 0},
-            {min: 100000,max: 200000,price_quantity: 0},
-            {min: 200000,max: 300000,price_quantity: 0},
-            {min: 300000,max: 500000,price_quantity: 0},
-            {min: 500000,max: 1000000,price_quantity: 0}
+            { min: 50000, max: 100000, price_quantity: 0 },
+            { min: 100000, max: 200000, price_quantity: 0 },
+            { min: 200000, max: 300000, price_quantity: 0 },
+            { min: 300000, max: 500000, price_quantity: 0 },
+            { min: 500000, max: 1000000, price_quantity: 0 }
         ]
         const arrCategory = [
-            {category: "Steak",category_quantity:0},
-            {category: "Burger",category_quantity:0},
-            {category: "Gà Rán",category_quantity:0},
-            {category: "Pizza",category_quantity:0},
-            {category: "Salad",category_quantity:0},
-            {category: "Đồ Uống",category_quantity:0}
+            { category: "Steak", category_quantity: 0 },
+            { category: "Burger", category_quantity: 0 },
+            { category: "Gà Rán", category_quantity: 0 },
+            { category: "Pizza", category_quantity: 0 },
+            { category: "Salad", category_quantity: 0 },
+            { category: "Đồ Uống", category_quantity: 0 }
         ]
-        data.map((v)=>{
-            arrPrice.map((i)=>{
-                if((i.min < v.price) && (v.price <= i.max)){
+
+        data.map((p) => {
+            if (p.category === category) {
+                data2.push(p)
+            }
+            if (checkPrice !== -1) {
+                var Price = category.split("&")
+                console.log(Price)
+                if ((Price[0] < p.price) && (p.price <= Price[1])) {
+                    data2.push(p)
+                }
+            }
+            arrPrice.map((i) => {
+                if ((i.min < p.price) && (p.price <= i.max)) {
                     i.price_quantity = i.price_quantity + 1
-                } 
+                }
             })
-            arrCategory.map((c)=>{
-                if(v.category === c.category){
+            arrCategory.map((c) => {
+                if (p.category === c.category) {
                     c.category_quantity = c.category_quantity + 1
-                } 
+                }
             })
         })
+        
+
+        console.log(data2);
         console.log(arrPrice);
         console.log(arrCategory);
 
-        const data3 = data.sort(function(a, b) {
-            return  a.view - b.view;
+        const data3 = data.sort(function (a, b) {
+            return a.view - b.view;
         });
         const arrHotProduct = []
         for (let y = 1; y <= 4; y++) {
@@ -114,13 +136,13 @@ const ProductPage = {
                                         <h5>Sản Phẩm Bán Chạy</h5>
                                     </div>
                                     <ul class="widget-wrapper">
-                                        ${arrHotProduct.map((hotProduct)=>/*html*/`
+                                        ${arrHotProduct.map((hotProduct) =>/*html*/`
                                             <li class="d-flex flex-wrap justify-content-between">
                                                 <div class="post-thumb">
-                                                    <a href="/products/detail/${hotProduct.id}"><img src="${hotProduct.image}" alt="product"></a>
+                                                    <a href="/products/${hotProduct.id}"><img src="${hotProduct.image}" alt="product"></a>
                                                 </div>
                                                 <div class="post-content ">
-                                                    <h6><a href="/products/detail/${hotProduct.id}">${hotProduct.name}</a></h6>
+                                                    <h6><a href="/products/${hotProduct.id}">${hotProduct.name}</a></h6>
                                                     <p>${hotProduct.price} VNĐ</p>
                                                 </div>
                                             </li>
@@ -172,7 +194,7 @@ const ProductPage = {
                                         <h5>Quảng Cáo</h5>
                                     </div>
                                     <ul class="widget-wrapper d-flex flex-wrap justify-content-center">
-                                        <li><a href="#"><img src="./assets/img/main-content-thongtin2.png" alt="product"></a></li>
+                                        <li><a href="#"><img src="../assets/img/main-content-thongtin2.png" alt="product"></a></li>
                                     </ul>
                                 </div>
                             </aside>
@@ -191,7 +213,7 @@ const ProductPage = {
                     
                                         <div class="shop-product-wrap flex row">
 
-                                            ${data.map((product)=>/*html*/`
+                                            ${data2.map((product) =>/*html*/`
                                             <div class="col-xl-3 col-md-6 col-12">
                                                 <div class="product-item">
                                                     <div class="product-thumb">
@@ -200,7 +222,7 @@ const ProductPage = {
                                                         <div class="product-action-link">
                                                             <a href="assets/images/product/01.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
                                                             <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                            <a href="/products/detail/${product.id}"><i class="icofont-cart-alt"></i></a>
+                                                            <a href="/products/${product.id}"><i class="icofont-cart-alt"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
@@ -224,13 +246,13 @@ const ProductPage = {
                                                         <div class="product-action-link">
                                                             <a href="assets/images/product/01.jpg" data-rel="lightcase"><i class="icofont-eye"></i></a>
                                                             <a href="#"><i class="icofont-heart-alt"></i></a>
-                                                            <a href="/products/detail/${product.id}"><i class="icofont-cart-alt"></i></a>
+                                                            <a href="/products/${product.id}"><i class="icofont-cart-alt"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
                                                         <div class="product-title">
                                                             <span class="cat-name">${product.category}</span>
-                                                            <h6><a href="/products/detail/${product.id}">${product.name}</a></h6>
+                                                            <h6><a href="/products/${product.id}">${product.name}</a></h6>
                                                             <span class="price">${product.price} VNĐ</span>
                                                             <div class="rating">
                                                                 <i class="icofont-star"></i>
@@ -304,10 +326,10 @@ const ProductPage = {
 
         `;
     },
-    afterRender(){
+    afterRender() {
         Cart.afterRender()
         HeaderPage.afterRender()
-        $(function() {
+        $(function () {
             $('.product-view-mode').on('click', 'a', function (e) {
                 e.preventDefault();
                 var shopProductWrap = $('.shop-product-wrap');
@@ -318,9 +340,9 @@ const ProductPage = {
             });
         });
     }
-    
+
 
 
 
 }
-export default ProductPage;
+export default CategoryPage;

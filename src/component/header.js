@@ -28,7 +28,7 @@ const HeaderPage = {
 		<div class="mobile-menu">
 			<nav class="mobile-header">
 				<div class="header-logo">
-					<a href="index.html"><img src="./assets/img/logo.png" alt="logo"></a>
+					<a href="/"><img src="../../assets/img/logo.png" alt="logo"></a>
 				</div>
 				<div class="header-bar">
 					<span></span>
@@ -40,11 +40,11 @@ const HeaderPage = {
 				<div class="mobile-menu-area">
 					<div class="mobile-menu-area-inner">
 						<ul>
-                            <li class="active"><a href="index.html">Trang Chủ</a></li>
+                            <li class="active"><a href="/">Trang Chủ</a></li>
                             <li><a href="about.html">Thông Tin</a>
                                 
                             </li>
-                            <li><a href="shop-page.html">Sản Phẩm</a>
+                            <li><a href="/product">Sản Phẩm</a>
                                 
                             </li>   
                             <li><a href="reserv.html">Đặt Bàn</a></li>
@@ -96,16 +96,16 @@ const HeaderPage = {
                     <div class="container">
                         <div class="primary-menu">
                             <div class="logo">
-                                <a href="index.html"><img src="./assets/img/logo.png" alt="logo" class="img-logo"></a>
+                                <a href="/"><img src="../../assets/img/logo.png" alt="logo" class="img-logo"></a>
                             </div>
                             <div class="main-area">
                                 <div class="main-menu">
                                     <ul>
-                                        <li class="active"><a href="index.html">Trang Chủ</a></li>
+                                        <li class="active"><a href="/">Trang Chủ</a></li>
                                         <li><a href="about.html">Thông Tin</a>
                                             
                                         </li>
-                                        <li><a href="shop-page.html">Sản Phẩm</a>
+                                        <li><a href="/product">Sản Phẩm</a>
                                             
                                         </li>   
                                         <li><a href="reserv.html">Đặt Bàn</a></li>
@@ -135,7 +135,7 @@ const HeaderPage = {
                                                             <div class="cart-inner">
                                                                 <div class="cart-top">
                                                                     <div class="thumb">
-                                                                        <a href="#"><img src="assets/images/product/01.jpg" alt=""></a>
+                                                                        <a href="#"><img src="../../assets/images/product/01.jpg" alt=""></a>
                                                                     </div>
                                                                     <div class="content">
                                                                         <a href="#">Split Remedy Split End Shampoo</a>
@@ -159,7 +159,7 @@ const HeaderPage = {
                                                             <div class="cart-inner">
                                                                 <div class="cart-top">
                                                                     <div class="thumb">
-                                                                        <a href="#"><img src="assets/images/product/02.jpg" alt=""></a>
+                                                                        <a href="#"><img src="../../assets/images/product/02.jpg" alt=""></a>
                                                                     </div>
                                                                     <div class="content">
                                                                         <a href="#">Split Remedy Split End Shampoo</a>
@@ -183,7 +183,7 @@ const HeaderPage = {
                                                             <div class="cart-inner">
                                                                 <div class="cart-top">
                                                                     <div class="thumb">
-                                                                        <a href="#"><img src="assets/images/product/03.jpg" alt=""></a>
+                                                                        <a href="#"><img src="../../assets/images/product/03.jpg" alt=""></a>
                                                                     </div>
                                                                     <div class="content">
                                                                         <a href="#">Split Remedy Split End Shampoo</a>
@@ -207,7 +207,7 @@ const HeaderPage = {
                                                             <div class="cart-inner">
                                                                 <div class="cart-top">
                                                                     <div class="thumb">
-                                                                        <a href="#"><img src="assets/images/product/04.jpg" alt=""></a>
+                                                                        <a href="#"><img src="../../assets/images/product/04.jpg" alt=""></a>
                                                                     </div>
                                                                     <div class="content">
                                                                         <a href="#">Split Remedy Split End Shampoo</a>
