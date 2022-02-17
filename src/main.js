@@ -8,8 +8,9 @@ import SignInPage from "./pages/signin";
 import ProfilePage from "./pages/profile"
 import DetailProductPage from "./pages/detailProduct"
 import CategoryPage from "./pages/category"
-
-
+import ContactPage from "./pages/contact"
+import ReservPage from "./pages/reserv"
+import NewsPage from "./pages/news"
 
 // -----FRONT-END-------
 import AdminPage from "./pages/admin/admin-dashbroad";
@@ -65,15 +66,24 @@ router.on({
         print(ProductPage);
         
     },
-    "/products/:category": (value) =>{
-        console.log(value.data.category);
-        print(CategoryPage,value.data.category);
+    // "/products/:category": (value) =>{
+    //     console.log(value.data.category);
+    //     print(CategoryPage,value.data.category);
+        
+    // },
+    "/categoryProducts/:id": (value) =>{
+        console.log(value.data.id);
+        print(CategoryPage,value.data.id);
         
     },
     "/products/detail/:id": (value) =>{
         console.log(value.data.id);
         console.log(value);
         print(DetailProductPage,value.data.id);
+        
+    },
+    "/news": () => {
+        print(NewsPage);
         
     },
     "/news/:id": (value) =>{
@@ -90,8 +100,16 @@ router.on({
         print(SignInPage);
         
     },
+    "/reserv": () => {
+        print(ReservPage);
+        
+    },
     "/profile": () => {
         print(ProfilePage);
+        
+    },
+    "/contact": () => {
+        print(ContactPage);
         
     },
     "/admin/dashbroad": () => {

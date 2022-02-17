@@ -2,13 +2,32 @@ import HeaderPage from "../component/header";
 import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
-import {  getAll } from "../api/product"
+import {  getAll,getAllProductCate,getAllByPrice } from "../api/product"
+import {getAllCateProduct} from "../api/cateProduct"
 
 const ProductPage = {
     async render(){
-        const { data } = await getAll();
+        const url = window.location.href
+        console.log(url);
+        console.log(url.search("price_gte"));
+        const { data } = await getAllProductCate();
+        const mm = "http://localhost:3001/products/?price_gte=100000&price_lte=190000&_expand=categoryProduct"
+        console.log(mm.search("price_gte"));
+        if(mm.search("price_gte") !== -1){
+            
+            const regex = /=[0-9]{0,}/g;
+            const minMax = mm.match(regex).join("").replace(/=/g," ").split(" ")
+            // const pp = minMax
+            console.log(minMax);
+            const { data } = await getAllByPrice(minMax[1],minMax[2]);
+            console.log(data);
+            console.log(1);
+        }
         
         console.log(data);
+        const  data2  = await getAllCateProduct();    
+        
+        console.log(data2);
         const arrPrice = [
             {min: 50000,max: 100000,price_quantity: 0},
             {min: 100000,max: 200000,price_quantity: 0},
@@ -16,28 +35,17 @@ const ProductPage = {
             {min: 300000,max: 500000,price_quantity: 0},
             {min: 500000,max: 1000000,price_quantity: 0}
         ]
-        const arrCategory = [
-            {category: "Steak",category_quantity:0},
-            {category: "Burger",category_quantity:0},
-            {category: "Gà Rán",category_quantity:0},
-            {category: "Pizza",category_quantity:0},
-            {category: "Salad",category_quantity:0},
-            {category: "Đồ Uống",category_quantity:0}
-        ]
+        
         data.map((v)=>{
             arrPrice.map((i)=>{
                 if((i.min < v.price) && (v.price <= i.max)){
                     i.price_quantity = i.price_quantity + 1
                 } 
             })
-            arrCategory.map((c)=>{
-                if(v.category === c.category){
-                    c.category_quantity = c.category_quantity + 1
-                } 
-            })
+            
         })
         console.log(arrPrice);
-        console.log(arrCategory);
+        
 
         const data3 = data.sort(function(a, b) {
             return  a.view - b.view;
@@ -86,9 +94,9 @@ const ProductPage = {
                                         <h5>Danh Mục</h5>
                                     </div>
                                     <ul class="widget-wrapper">
-                                        ${arrCategory.map((category_sort)=>/*html*/`
+                                        ${data2.data.map((category_sort)=>/*html*/`
                                             <li>
-                                                <a href="/products/${category_sort.category}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${category_sort.category}</span><span>${category_sort.category_quantity}</span></a>
+                                                <a href="/categoryProducts/${category_sort.id}?_embed=products" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${category_sort.name}</span><span>${category_sort.id}</span></a>
                                             </li>
                                         `).join("")}
                                         
@@ -205,7 +213,7 @@ const ProductPage = {
                                                     </div>
                                                     <div class="product-content">
                                                         <div class="product-title">
-                                                            <span class="cat-name">${product.category}</span>
+                                                            <span class="cat-name">${product.categoryProduct.name}</span>
                                                             <h6><a href="products/${product.id}">${product.name}</a></h6>
                                                             <div class="rating">
                                                                 <i class="icofont-star"></i>

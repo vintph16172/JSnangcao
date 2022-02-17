@@ -6,20 +6,21 @@ import HeaderPage from "../component/header";
 import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
-import {  getAll } from "../api/product"
+import {  getAllProductCate } from "../api/product"
 
 const DetailProductPage = {
     async render(id){
-        const { data } = await getAll();
+        const { data } = await getAllProductCate();
         const data2 = []
         const relateProduct = [];
         const arr = []
         console.log(data);
         data.map((p)=>{
-            if(p.id === id){
+            if(p.id == id){
                 data2.push(p)
             }
         })
+        console.log(data2);
         data.map((h)=>{
             if(h.category === data2[0].category){
                 arr.push(h)
@@ -103,7 +104,7 @@ const DetailProductPage = {
                                                     <h5 class="text-2xl"><a href="/products/${data2[0].id}">Bò Bít Tết</a></h5>
                                                     <div class="p-food-group">
                                                         <span>Danh Mục :</span>
-                                                        <a href="#">${data2[0].category}</a>
+                                                        <a href="#">${data2[0].categoryProduct.name}</a>
                                                         
                                                     </div>
                                                     <div class="rating">
@@ -195,7 +196,7 @@ const DetailProductPage = {
                                                         <span class="price">${product.sale}%</span>
                                                     </div>
                                                     <div class="product-content">
-                                                        <p>${product.category}</p>
+                                                        <p>${product.categoryProduct.name}</p>
                                                         <h6>${product.name}</h6>
                                                         <div class="rating">
                                                             <i class="icofont-star"></i>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <ul id="list-user"></ul>
+    <ul id="page-number"></ul>
+    <script> 
+            function loadData(page, per_page){
+            option_axios = {
+                url : 'https://reqres.in/api/users?page='+page+'&per_page=' + per_page,
+                method: 'get',
+                responseType:'json'
+            }
+
+            axios( option_axios )
+            .then(function(data_res){
+                console.log(data_res);
+                //------ hiển thị dữ liệu
+                list_user = data_res.data.data;
+                str_li = ''
+                list_user.forEach(function(user){
+                    str_li += '<li>' + user.id + '--' + user.email + '</li>';
+                })
+                document.querySelector('#list-user').innerHTML = str_li;
+                //--- hiển thị số trang
+                li_page = ''
+                for(i = 1; i<= data_res.data.total_pages; i++){
+                    li_page += '<li> <a href="#"  onclick="loadData( '+ i +', '+per_page+')"  >'+ i + '</a></li>';
+                }
+                document.querySelector('#page-number').innerHTML = li_page;
+
+
+                 
+            });
+
+        }
+
+         
+        
+
+        loadData(1,5)
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

@@ -52,7 +52,7 @@ const HeaderPage = {
                                 
                             </li>
                             
-                            <li><a href="contact-us.html">Liên Hệ</a></li>
+                            <li><a href="/contact">Liên Hệ</a></li>
                         </ul>
 					</div>
 				</div>
@@ -118,6 +118,7 @@ const HeaderPage = {
                                 </div>
                                 <div class="cart-search">
                                     <ul>
+                                        <li class=""><a href="/signin">Đăng Nhập</a></li>
                                         <li class="search"><i class="icofont-search-2"></i></li>
                                         <li class="cart-area">
                                             <div class="cart-icon">

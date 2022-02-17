@@ -1,27 +1,30 @@
 import { signin } from "../api/user";
 
 const SignInPage = {
-    render(){
-        
+    render() {
+
 
 
         return /*html*/`
         <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
             <div class="max-w-md w-full space-y-8">
-                <div>
+                <div class="grid grid-rows-2">
                     <a href="/">
-                        <img class="mx-auto h-12 w-auto" src="./img/1200px-FPT-Polytechnic.png" alt="Workflow">
+                        <img class="mx-auto h-24 w-auto" src="../../assets/img/logo.png" alt="Workflow">
                     </a>
                    
-                    <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                        Đăng Nhập Tài Khoản
-                    </h2>
-                    <p class="mt-2 text-center text-sm text-gray-600">
-                        hoặc
-                        <a href="/signup" class="font-medium text-[#0066B3] hover:text-[#F26F1B]">
-                        Đăng Ký
-                        </a>
-                    </p>
+                    <div>
+                        <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">
+                            Đăng Nhập Tài Khoản
+                        </h2>
+                        <p class="mt-2 text-center text-sm text-gray-600">
+                            hoặc
+                            <a href="/signup" class="font-medium text-[#0066B3] hover:text-[#F26F1B]">
+                            Đăng Ký
+                            </a>
+                        </p>
+                    
+                    </div>
                 </div>
                 <form class="mt-8 space-y-6" action="#" method="" id="form-signin">
                     <input type="hidden" name="remember" value="true">
@@ -74,20 +77,20 @@ const SignInPage = {
         
         `;
     },
-    afterRender(){
+    afterRender() {
 
-        const email = document.querySelector('#email');   
-        const password = document.querySelector('#password');  
+        const email = document.querySelector('#email');
+        const password = document.querySelector('#password');
         const remember = document.querySelector('#remember-me');
 
-        if(localStorage.getItem("user_remember")){
+        if (localStorage.getItem("user_remember")) {
             email.value = JSON.parse(localStorage.getItem('user_remember')).email;
-            
-            
-           
-        }else{
-            email.value= "";
-            
+
+
+
+        } else {
+            email.value = "";
+
         }
 
         const formSignin = document.querySelector('#form-signin');
@@ -100,30 +103,30 @@ const SignInPage = {
                 });
                 console.log(response.data.user);
                 localStorage.setItem('user', JSON.stringify(response.data.user));
-                
-                
-                if(remember.checked){
+
+
+                if (remember.checked) {
                     localStorage.setItem('user_remember', JSON.stringify(response.data.user));
-                    
+
                 }
-                
+
                 alert("Đăng Nhập Thành Công!")
-                if(response.data.user.id === 1){
-                    document.location.href="/admin/news";
+                if (response.data.user.id === 1) {
+                    document.location.href = "/admin/news";
                 } else {
-                    document.location.href="/";
+                    document.location.href = "/";
                 }
 
             } catch (error) {
                 console.log(error.response.data);
-                document.querySelector('#alert').innerHTML="Mời Bạn Nhập Lại!";
-            
-                if(error.response.data === "Cannot find user"){
+                document.querySelector('#alert').innerHTML = "Mời Bạn Nhập Lại!";
+
+                if (error.response.data === "Cannot find user") {
                     email.classList.add("border-red-500");
-                }else{
+                } else {
                     password.classList.add("border-red-500");
                 }
-                
+
             }
         });
     }

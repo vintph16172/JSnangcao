@@ -3,65 +3,27 @@ import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
 import { getAll } from "../api/product"
-
+import { getAllCateProduct, getAllById } from "../api/cateProduct"
 const CategoryPage = {
     async render(category) {
-        const { data } = await getAll();
-        const data2 = []
+        const { data } = await getAllById(category);
+        const dataCate = await getAllCateProduct();
+        const dataProduct = await getAll();
+        
         console.log(data);
 
-        category.replace("%20", " ")
-
-        let checkPrice = category.search("&");
-        console.log(checkPrice);
-
-        console.log(category);
+        console.log(dataCate);
+        console.log(dataProduct);
 
         const arrPrice = [
-            { min: 50000, max: 100000, price_quantity: 0 },
-            { min: 100000, max: 200000, price_quantity: 0 },
-            { min: 200000, max: 300000, price_quantity: 0 },
-            { min: 300000, max: 500000, price_quantity: 0 },
-            { min: 500000, max: 1000000, price_quantity: 0 }
-        ]
-        const arrCategory = [
-            { category: "Steak", category_quantity: 0 },
-            { category: "Burger", category_quantity: 0 },
-            { category: "Gà Rán", category_quantity: 0 },
-            { category: "Pizza", category_quantity: 0 },
-            { category: "Salad", category_quantity: 0 },
-            { category: "Đồ Uống", category_quantity: 0 }
+            {min: 50000,max: 100000,price_quantity: 0},
+            {min: 100000,max: 200000,price_quantity: 0},
+            {min: 200000,max: 300000,price_quantity: 0},
+            {min: 300000,max: 500000,price_quantity: 0},
+            {min: 500000,max: 1000000,price_quantity: 0}
         ]
 
-        data.map((p) => {
-            if (p.category === category) {
-                data2.push(p)
-            }
-            if (checkPrice !== -1) {
-                var Price = category.split("&")
-                console.log(Price)
-                if ((Price[0] < p.price) && (p.price <= Price[1])) {
-                    data2.push(p)
-                }
-            }
-            arrPrice.map((i) => {
-                if ((i.min < p.price) && (p.price <= i.max)) {
-                    i.price_quantity = i.price_quantity + 1
-                }
-            })
-            arrCategory.map((c) => {
-                if (p.category === c.category) {
-                    c.category_quantity = c.category_quantity + 1
-                }
-            })
-        })
-        
-
-        console.log(data2);
-        console.log(arrPrice);
-        console.log(arrCategory);
-
-        const data3 = data.sort(function (a, b) {
+        const data3 = dataProduct.data.sort(function (a, b) {
             return a.view - b.view;
         });
         const arrHotProduct = []
@@ -108,9 +70,9 @@ const CategoryPage = {
                                         <h5>Danh Mục</h5>
                                     </div>
                                     <ul class="widget-wrapper">
-                                        ${arrCategory.map((category_sort)=>/*html*/`
+                                        ${dataCate.data.map((category_sort) =>/*html*/`
                                             <li>
-                                                <a href="/products/${category_sort.category}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${category_sort.category}</span><span>${category_sort.category_quantity}</span></a>
+                                                <a href="/categoryProducts/${category_sort.id}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${category_sort.name}</span><span>${category_sort.name}</span></a>
                                             </li>
                                         `).join("")}
                                         
@@ -121,7 +83,7 @@ const CategoryPage = {
                                         <h5>Giá</h5>
                                     </div>
                                     <ul class="widget-wrapper">
-                                        ${arrPrice.map((price_sort)=>/*html*/`
+                                        ${arrPrice.map((price_sort) =>/*html*/`
                                             <li>
                                                 <a href="/products/${price_sort.min}&${price_sort.max}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${price_sort.min} - ${price_sort.max}</span><span>${price_sort.price_quantity}</span></a>
                                             </li>
@@ -213,7 +175,7 @@ const CategoryPage = {
                     
                                         <div class="shop-product-wrap flex row">
 
-                                            ${data2.map((product) =>/*html*/`
+                                            ${data.products.map((product) =>/*html*/`
                                             <div class="col-xl-3 col-md-6 col-12">
                                                 <div class="product-item">
                                                     <div class="product-thumb">
@@ -227,7 +189,7 @@ const CategoryPage = {
                                                     </div>
                                                     <div class="product-content">
                                                         <div class="product-title">
-                                                            <span class="cat-name">${product.category}</span>
+                                                            <span class="cat-name">${data.name}</span>
                                                             <h6><a href="products/${product.id}">${product.name}</a></h6>
                                                             <div class="rating">
                                                                 <i class="icofont-star"></i>
@@ -285,7 +247,7 @@ const CategoryPage = {
                                                     <a href="#">1</a>
                                                 </li>
                                                 <li class="d-none d-sm-block">
-                                                    <a href="#">2</a>
+                                                    <a href="categoryProducts?_page=2&_limit=3">2</a>
                                                 </li>
                                                 <li class="d-none d-sm-block">
                                                     <a href="#">3</a>
