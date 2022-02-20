@@ -1,14 +1,15 @@
 import AdminHeader from "../../../component/admin-header";
-import { get, update } from "../../../api/user"
+import { get, update } from "../../../api/product"
+import { getAllCateProduct } from "../../../api/cateProduct"
+import { reRender } from "../../../../utils/reRender"
 import axios from "axios";
 
-
-const AdminUsersEdit = {
+const AdminProductsEdit = {
     async render(id) {
         const { data } = await get(id);
-        
+        const  data2  = await getAllCateProduct();
         console.log(data);
-        
+        console.log(data2);
 
 
         return /*html*/`
@@ -35,7 +36,7 @@ const AdminUsersEdit = {
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
-                  <li class="breadcrumb-item active">Quản trị Tài Khoản</li>
+                  <li class="breadcrumb-item active">Quản trị Sản Phẩm</li>
                 </ol>
               </div><!-- /.col -->
             </div><!-- /.row -->
@@ -54,7 +55,7 @@ const AdminUsersEdit = {
                   <span class="info-box-icon bg-info elevation-1"><i class="fab fa-product-hunt"></i></span>
   
                   <div class="info-box-content">
-                    <span class="info-box-text">Tài Khoản</span>
+                    <span class="info-box-text">Sản Phẩm</span>
                     <span class="info-box-number">
                       18
   
@@ -124,7 +125,7 @@ const AdminUsersEdit = {
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Quản Trị Tài Khoản</h3>
+                      <h3 class="card-title">Quản Trị Sản Phẩm</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -132,7 +133,7 @@ const AdminUsersEdit = {
                     <!-- general form elements -->
                     <div class="card card-primary">
                       <div class="card-header">
-                        <h3 class="card-title">Sửa Tài Khoản</h3>
+                        <h3 class="card-title">Sửa Sản Phẩm</h3>
                       </div>
                       <!-- /.card-header -->
                       <!-- form start -->
@@ -140,48 +141,56 @@ const AdminUsersEdit = {
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Tên:</label>
-                                <input type="text" class="form-control" id="user-name" value="${data.username}">
+                                <input type="text" class="form-control" id="product-name" value="${data.name}">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Email:</label>
-                                <input type="email" class="form-control" id="user-email" value="${data.email}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Giới Tính:</label>
-                                <select id='user-gender' class="custom-select">
-                                    
-                                    ${data.gender == 0 ? '<option value="0" >Nữ</option><option value="1" >Nam</option>' : '<option value="1" >Nam</option><option value="0" >Nữ</option>'}
+                                <label for="exampleInputPassword1">Danh Mục:</label>
+                                <select id='product-category' class="custom-select">
+                                    <option value="${data.categoryProduct.id}" >${data.categoryProduct.name}</option>
+                                    ${data2.data.map((cate)=>{
+                                        if(cate.id!==data.categoryProduct.id){
+                                            return /*html*/`<option value="${cate.id}" >${cate.name}</option>`
+                                        }
+                                    })}
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label label for="exampleInputEmail1">Số Điện Thoại:</label>
-                                <input type="number" class="form-control" id="user-phonenumber" value="${data.phonenumber}">
+                                <label label for="exampleInputEmail1">Mã Sản Phẩm:</label>
+                                <input type="text" class="form-control" id="product-code" value="${data.code}">
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Địa Chỉ:</label>
-                                <input type="text" class="form-control" id="user-address" value="${data.address}">
+                                <label for="exampleInputEmail1">Số Lượng:</label>
+                                <input type="number" class="form-control" id="product-quantity" value="${data.quantity_amount}">
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Ngày Sinh:</label>
-                                <input type="date" class="form-control" id="user-borndate" value="${data.borndate}">
+                                <label for="exampleInputEmail1">Giá:</label>
+                                <input type="number" class="form-control" id="product-price" value="${data.price}">
                             </div>
 
-                            
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Giảm Giá:</label>
+                                <input type="number" class="form-control" id="product-sale" value="${data.sale}">
+                            </div>
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Chức Vụ:</label>
-                                <select id='user-permission' class="custom-select">
+                                <label for="exampleInputEmail1">View:</label>
+                                <input type="number" class="form-control" id="product-view" value="${data.view}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Danh Mục:</label>
+                                <select id='product-status' class="custom-select">
                                     
-                                    ${data.permission == 0 ? '<option value="0" >Người Dùng</option><option value="1" >Admin</option>' : '<option value="1" >Admin</option><option value="0" >Người Dùng</option>'}
+                                    ${data.status == 0 ?'<option value="0" >Ẩn</option><option value="1" >Hoạt Động</option>' :'<option value="1" >Hoạt Động</option><option value="0" >Ẩn</option>'}
                                 </select>
                             </div>
 
 
                           <div class="form-group">
                             <label for="exampleInputFile">Ảnh</label>
-                            <img src="${data.avatar}" alt="" style="max-width: 100%; width: 100px; height: 100px; ">
+                            <img src="${data.image}" alt="" style="max-width: 100%; width: 100px; height: 100px; ">
                             <div class="input-group">
                               <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="file-upload">
@@ -192,7 +201,10 @@ const AdminUsersEdit = {
                               </div>
                             </div>
                           </div>
-                           
+                            <div class="form-group">
+                                <label>Textarea</label>
+                                <textarea id="product-desc" class="form-control" rows="3" >${data.desc}</textarea>
+                            </div>
                           
                         </div>
                         <!-- /.card-body -->
@@ -258,86 +270,87 @@ const AdminUsersEdit = {
         const formEdit = document.querySelector("#form-update");
         const imgPost = document.querySelector('#file-upload');
         const imgValue = document.querySelector('#file-upload').value;
-
+        
 
         imgPost.addEventListener('change', async (e) => {
-
+            
             const file = e.target.files[0];
             const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/vintph16172/image/upload"
-
+      
             const formData = new FormData();
-
+      
             formData.append('file', file);
             formData.append('upload_preset', "ypn4yccr");
-
+      
             // call api cloudinary
-
+          
             const response = await axios.post(CLOUDINARY_API, formData, {
-                headers: {
-                    "Content-Type": "application/form-data"
-                }
+              headers: {
+                "Content-Type": "application/form-data"
+              }
             });
             console.log(response.data.url);
-
-            formEdit.addEventListener("submit", (b) => {
+            
+            formEdit.addEventListener("submit",(b) =>{
                 b.preventDefault();
-
+                
                 update({
                     id: id,
-                    username: document.querySelector("#user-name").value,
-                    email: document.querySelector("#user-email").value,
-                    borndate: document.querySelector("#user-borndate").value,
-                    gender: parseInt(document.querySelector("#user-gender").value),
-                    phonenumber: document.querySelector("#user-phonenumber").value,
-                    permission: parseInt(document.querySelector("#user-permission").value),
-                    address:  document.querySelector("#user-address").value,
-                    avatar: response.data.url,
-                    password: "1234"
-
+                    image: response.data.url,
+                    name: document.querySelector("#product-name").value,
+                    categoryProductId: parseInt(document.querySelector("#product-category").value),
+                    quantity_amount: document.querySelector("#product-quantity").value,
+                    code: document.querySelector("#product-code").value,
+                    desc: document.querySelector("#product-desc").value,
+                    price: document.querySelector("#product-price").value,
+                    sale: document.querySelector("#product-sale").value,
+                    view: document.querySelector("#product-view").value,
+                    status: parseInt(document.querySelector("#product-status").value)
+                    
                 });
                 alert("Update Thành Công!")
-
+                
             })
-
+      
         });
-        if (imgValue === "") {
-            formEdit.addEventListener("submit", (b) => {
+        if(imgValue === ""){
+            formEdit.addEventListener("submit",(b) =>{
                 b.preventDefault();
-
+                
                 update({
                     id: id,
-                    username: document.querySelector("#user-name").value,
-                    email: document.querySelector("#user-email").value,
-                    borndate: document.querySelector("#user-borndate").value,
-                    gender: parseInt(document.querySelector("#user-gender").value),
-                    phonenumber: document.querySelector("#user-phonenumber").value,
-                    permission: parseInt(document.querySelector("#user-permission").value),
-                    address:  document.querySelector("#user-address").value,
-                    avatar: data.avatar,
-                    password: "1234"
+                    image: data.image,
+                    name: document.querySelector("#product-name").value,
+                    categoryProductId: parseInt(document.querySelector("#product-category").value),
+                    quantity_amount: document.querySelector("#product-quantity").value,
+                    code: document.querySelector("#product-code").value,
+                    desc: document.querySelector("#product-desc").value,
+                    price: document.querySelector("#product-price").value,
+                    sale: document.querySelector("#product-sale").value,
+                    view: document.querySelector("#product-view").value,
+                    status: parseInt(document.querySelector("#product-status").value)
                 });
                 // console.log(id);
                 // console.log(data.img);
-                // console.log(document.querySelector("#user-name").value);
-                // console.log(document.querySelector("#user-category").value);
-                // console.log(document.querySelector("#user-quantity").value);
-                // console.log(document.querySelector("#user-code").value);
-                // console.log(document.querySelector("#user-desc").value);
-                // console.log(document.querySelector("#user-price").value);
-                // console.log(document.querySelector("#user-sale").value);
-                // console.log(document.querySelector("#user-view").value);
-                // console.log(document.querySelector("#user-status").value);
+                // console.log(document.querySelector("#product-name").value);
+                // console.log(document.querySelector("#product-category").value);
+                // console.log(document.querySelector("#product-quantity").value);
+                // console.log(document.querySelector("#product-code").value);
+                // console.log(document.querySelector("#product-desc").value);
+                // console.log(document.querySelector("#product-price").value);
+                // console.log(document.querySelector("#product-sale").value);
+                // console.log(document.querySelector("#product-view").value);
+                // console.log(document.querySelector("#product-status").value);
 
-
+                
                 alert("Update Thành Công! 11")
             })
         }
-
-
+        
+        
     }
 
 
 }
 
-
-export default AdminUsersEdit
+export default AdminProductsEdit;

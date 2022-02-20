@@ -1,9 +1,9 @@
-import AdminHeader from "../../component/admin-header";
-import { getAllProductCate,remove } from "../../api/product"
+import AdminHeader from "../../../component/admin-header";
+import { getAllProductCate,remove } from "../../../api/product"
 
-import { reRender } from "../../../utils/reRender"
+import { reRender } from "../../../../utils/reRender"
 
-const AdminPage = {
+const AdminProducts = {
   async render() {
     const { data } = await getAllProductCate();
     console.log(data);
@@ -234,7 +234,7 @@ const AdminPage = {
         if (confirm) {
           remove(id)
             .then(() => alert('Bạn đã xóa thành công'))
-            .then(() => { reRender(AdminPage, "#content") })
+            .then(() => { reRender(AdminProducts, "#content") })
         }
 
       });
@@ -244,4 +244,4 @@ const AdminPage = {
 
 }
 
-export default AdminPage;
+export default AdminProducts;

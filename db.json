@@ -1,160 +1,195 @@
 {
-  
   "posts": [
     {
       "id": 1,
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "../../assets/img/blog-news1.png",
+      "img": "../../../../assets/img/blog-news1.png",
       "author": "vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
     },
     {
       "id": 2,
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "../../assets/img/blog-news2.png",
+      "img": "../../../../assets/img/blog-news2.png",
       "author": "vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
     },
     {
       "id": 3,
       "title": "Top 10 Món Ăn Đơn Giản Mà Ngon Cho Gia Đình... ",
-      "img": "../../assets/img/blog-news3.png",
+      "img": "../../../../assets/img/blog-news3.png",
       "author": "vintph1672",
       "desc": "Một sự thanh thản tuyệt vời đã chiếm lấy toàn bộ tâm hồn của tôi như những mùa xuân ngọt ngào này, tận hưởng bằng cả trái tim Tôi chỉ có một mình, và cảm nhận sự quyến rũ của sự tồn tại ở điểm mà chúng ta đã tạo ra. trong cảm giác chính xác của chỉ Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi như những bông hoa hồng ngọt ngào mùa xuân này tận hưởng bằng cả trái tim Tôi chỉ có một mình và cảm nhận sự quyến rũ của điểm exstenceths mà chúng tôi đã tạo ra. cảm giác rõ ràng của sự tồn tại yên tĩnh đơn thuần, mà bỏ bê tài năng của tôi Tôi nên tạm biệt không thể vẽ và một cú đánh tại A serenty tuyệt vời đã chiếm hữu của tôi yêu thích như những mornin ngọt ngào sprng mà giây phút hiện tại; và nếu cảm thấy rằng tôi chưa bao giờ là một nhà nghệ thuật vĩ đại hơn"
     }
   ],
   "categoryProducts": [
     {
-      "id":1,
+      "id": 1,
       "name": "Steak"
     },
     {
-      "id":2,
+      "id": 2,
       "name": "Burger"
+    },
+    {
+      "id": 3,
+      "name": "Gà Rán"
     }
   ],
   "products": [
     {
       "id": 1,
+      "image": "../../../../assets/img/menu1.png",
       "name": "Bò Bít Tết",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":1,
-      "quantity": "28",
+      "categoryProductId": 1,
+      "quantity_amount": "9",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
-      "price": "100000",
+      "price": "60000",
       "sale": "20",
-      "view": "888"
+      "view": "888",
+      "status": 1
     },
     {
       "id": 2,
       "name": "Bò Bít Tết 2",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":2,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 2,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "300000",
       "sale": "20",
-      "view": "777"
+      "view": "777",
+      "status": 1
     },
     {
       "id": 3,
       "name": "Bò Bít Tết 3",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":2,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 2,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
-      "price": "200000",
+      "price": "90000",
       "sale": "20",
-      "view": "666"
+      "view": "666",
+      "status": 1
     },
     {
       "id": 4,
       "name": "Bò Bít Tết 4",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":2,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 2,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "200000",
       "sale": "20",
-      "view": "555"
+      "view": "555",
+      "status": 1
     },
     {
       "id": 5,
       "name": "Bò Bít Tết 5",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":2,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 2,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "200000",
       "sale": "20",
-      "view": "444"
+      "view": "444",
+      "status": 1
     },
     {
       "id": 6,
       "name": "Bò Bít Tết 6",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":1,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 1,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "200000",
       "sale": "20",
-      "view": "333"
+      "view": "333",
+      "status": 1
     },
     {
       "id": 7,
       "name": "Bò Bít Tết 7",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":1,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 1,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "200000",
       "sale": "20",
-      "view": "222"
+      "view": "222",
+      "status": 1
     },
     {
       "id": 8,
       "name": "Bò Bít Tết 8",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":1,
-      "quantity": "28",
+      "image": "../../../../assets/img/menu1.png",
+      "categoryProductId": 1,
+      "quantity_amount": "28",
       "code": "FS511948218",
       "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
       "price": "200000",
       "sale": "20",
-      "view": "111"
-    },
-    {
-      "id": 9,
-      "name": "Bò Bít Tết 9",
-      "image": "../../assets/img/menu1.png",
-      "categoryProductId":1,
-      "quantity": "28",
-      "code": "FS511948218",
-      "desc": "Chất lượng là thành phần số 1 của chúng tôi. Một số loại pho mát ngon nhất thế giới được làm gần nhà! Tất cả Mozzarella thơm ngon của chúng tôi đều được làm bằng 100% sữa Canada. Chúng tôi tự hào hỗ trợ nông dân chăn nuôi bò sữa của Canada....",
-      "price": "200000",
-      "sale": "20",
-      "view": "1000"
+      "view": "111",
+      "status": 1
     }
   ],
   "users": [
     {
+      "avatar": "https://picsum.photos/200/200",
+      "permission": 1,
+      "borndate": "2002-09-01",
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "phonenumber": "11998001001",
+      "gender": 1,
       "email": "vipro292002@gmail.com",
       "password": "$2a$10$lk3ddDiyrQia0yISh5zpPOcj2oraU76bRktv2M8njVJsbXkkK5YdO",
       "username": "vintph16172",
       "id": 1
     },
     {
-      "email": "vintph16172@fpt.edu.vn",
-      "password": "$2a$10$iYd//iN27NK3TgMm5TsIFe8zgv2RJmgnu34E0n.UJqQMYfCEBzTLG",
+      "id": 2,
       "username": "vintph16172",
-      "id": 2
+      "email": "vintph16172@fpt.edu.vn",
+      "borndate": "2002-09-01",
+      "gender": 0,
+      "phonenumber": "11998000892",
+      "permission": 0,
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "avatar": "https://picsum.photos/200/200",
+      "password": "$2a$10$F0VrElnst8Xhf2d27WbD1ecUa5JTfJkj2U0Iv/PwP2VInl.khhvT."
+    },
+    {
+      "id": 3,
+      "username": "vintph16172",
+      "email": "nguoidung1@fpt.edu.vn",
+      "borndate": "2002-09-01",
+      "gender": 0,
+      "phonenumber": "11998000892",
+      "permission": 0,
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "avatar": "https://picsum.photos/200/200",
+      "password": "$2a$10$x9H08.r02T9XvWVW5ohJVO2dZdaYSzxpWw1biojHVklTgTAnzN1ai"
+    },
+    {
+      "id": 4,
+      "username": "vintph16172",
+      "email": "nguoidung1@fpt.edu.vn",
+      "borndate": "2002-09-01",
+      "gender": 1,
+      "phonenumber": "11998000892",
+      "permission": 0,
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "avatar": "https://picsum.photos/200/200",
+      "password": "$2a$10$guBdGL3k3.2bPAqDXxtJde/b6BFyG5gdwJ1S1gADC.7vjUfLRZMB6"
     }
   ]
 }

@@ -1,10 +1,10 @@
 
 import axios from "axios";
-import { getAll } from "../api/product"
+import { getAll,getAllProductCate } from "../api/product"
 
 const News = {
     async render() {
-        const { data } = await getAll();
+        const { data } = await getAllProductCate();
         console.log(data);
         const data2 = [];
         
@@ -225,7 +225,7 @@ const News = {
                                     <span class="price">${hotProduct.sale}%</span>
                                 </div>
                                 <div class="product-content">
-                                    <p>${hotProduct.category}</p>
+                                    <p>${hotProduct.categoryProduct.name}</p>
                                     <h6>${hotProduct.name}</h6>
                                     <div class="rating">
                                         <i class="icofont-star"></i>

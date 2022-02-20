@@ -11,6 +11,7 @@ import CategoryPage from "./pages/category"
 import ContactPage from "./pages/contact"
 import ReservPage from "./pages/reserv"
 import NewsPage from "./pages/news"
+import ProductSortPage from "./pages/product-sort";
 
 // -----FRONT-END-------
 import AdminPage from "./pages/admin/admin-dashbroad";
@@ -20,7 +21,13 @@ import AdminNewsEdit from "./pages/admin/news/admin-news-edit";
 import AdminUsers from "./pages/admin/users/admin-users"
 import AdminUsersEdit from "./pages/admin/users/admin-users-edit"
 
+import AdminProducts from "./pages/admin/products/admin-products";
+import AdminProductsAdd from "./pages/admin/products/admin-news-add";
+import AdminProductsEdit from "./pages/admin/products/admin-product-edit"
 
+import AdminCategoryProducts from "./pages/admin/categoryProducts/admin-categoryProducts";
+import AdminCategoryProductsEdit from "./pages/admin/categoryProducts/admin-categoryProducts-edit";
+import AdminCategoryProductsAdd from "./pages/admin/categoryProducts/admin-categoryProducts-add";
 // -----BACK-END-------
 
 // **********************PAGE********************
@@ -64,6 +71,12 @@ router.on({
     },
     "/product": () => {
         print(ProductPage);
+        
+    },
+    "/product/sort/:min&:max": (value) => {
+        console.log(value.data);
+        
+        print(ProductSortPage,value.data);
         
     },
     // "/products/:category": (value) =>{
@@ -114,6 +127,26 @@ router.on({
     },
     "/admin/dashbroad": () => {
         print(AdminPage);
+    },
+    "/admin/categoryProducts": () => {
+        print(AdminCategoryProducts);
+    },
+    "/admin/categoryProducts/add": () => {
+        print(AdminCategoryProductsAdd);
+    },
+    "/admin/categoryProducts/:id/edit": (value) => {
+        
+        print(AdminCategoryProductsEdit,value.data.id);
+    },
+    "/admin/products": () => {
+        print(AdminProducts);
+    },
+    "/admin/products/add": () => {
+        print(AdminProductsAdd);
+    },
+    "/admin/products/:id/edit": (value) => {
+        
+        print(AdminProductsEdit,value.data.id);
     },
     "/admin/news": () => {
         print(AdminNews);
