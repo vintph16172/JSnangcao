@@ -325,6 +325,9 @@ const ProductPage = {
                 shopProductWrap.removeClass('flex list').addClass(viewMode);
             });
         });
+
+
+        
     }
     
 

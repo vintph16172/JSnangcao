@@ -1,8 +1,20 @@
 import Cart from "./cart";
 import { reRender } from "../../utils/reRender"
+import { decreaseQty, increaseQty, removeItemInCart } from "../../utils/cart";
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 const HeaderPage = {
     render() {
-
+        let cart = [];
+        let totalProduct = 0
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            console.log(cart);
+            cart.forEach((product) => {
+                totalProduct += product.price * product.quantity
+            })
+            console.log(totalProduct);
+        }
         return /*html*/`
         
         <div id="header">
@@ -63,7 +75,7 @@ const HeaderPage = {
 
 
     <!-- desktop menu start here -->
-    <header class="header-section">
+    <header id="cart" class="header-section">
         <div class="header-area">
             <div class="header-top">
                 <div class="container">
@@ -119,138 +131,90 @@ const HeaderPage = {
                             </div>
                             <div class="cart-search">
                                 <ul>
-                                    <li class="mt-3">${localStorage.getItem("user") ? `<a href="/admin/dashbroad">${JSON.parse(localStorage.getItem("user")).username}</a>` :'<a href="/signin">Đăng Nhập</a>'}</li>
+                                    <li class="mt-3">${localStorage.getItem("user") ? `<a href="/admin/dashbroad">${JSON.parse(localStorage.getItem("user")).username}</a>` : '<a href="/signin">Đăng Nhập</a>'}</li>
                                     
-                                    <li class="" ><svg id='logout' xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                                  </svg></li>
+                                    <li class="" >
+                                        <svg id='logout' xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                    </li>
                                     <li class="search"><i class="icofont-search-2"></i></li>
-                                    <li class="cart-area">
+                                    <li  class="cart-area">
                                         <div class="cart-icon">
                                             <i class="icofont-cart-alt"></i>
                                         </div>
-                                        <div class="count-item">04</div>
+                                        <div class="count-item">${localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")).length : 0}</div>
                                         <div class="cart-content">
                                             <div class="cart-title">
-                                                <div class="add-item">4 Sản Phẩm</div>
-                                                <div class="list-close"><a href="#">Đóng</a></div>
+                                                <div class="add-item">${localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")).length : 0} Sản Phẩm</div>
+                                                <div class="list-close">Đóng</div>
                                             </div>
                                             <div class="cart-scr scrollbar">
                                                 <div class="cart-con-item">
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="#"><img src="../../assets/images/product/01.jpg" alt=""></a>
+                                                    ${cart.length > 0 ? cart.map(item => /*html*/`
+                                                        <div class="cart-item">
+                                                            <div class="cart-inner">
+                                                                <div class="cart-top">
+                                                                    <div class="thumb">
+                                                                        <a href="/products/${item.id}"><img src="${item.image}" alt=""></a>
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <a href="/products/${item.id}">${item.name}</a>
+                                                                        <a class="block text-center text-gray-500 " href="/categoryProducts/${item.categoryProduct.id}">${item.categoryProduct.name}</a>
+                                                                    </div>
+                                                                    <div class="remove-btn">
+                                                                        
+                                                                        <button data-id="${item.id}" class="btn btn-remove"><i class="icofont-close"></i></button>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="content">
-                                                                    <a href="#">Split Remedy Split End Shampoo</a>
+                                                                <div class="cart-bottom">
+                                                                    <div class="sing-price">${item.price} VNĐ</div>
+                                                                    <div class="cart-plus-minus">
+                                                                            <div class="dec qtybutton">
+                                                                                <button data-id="${item.id}" class="btn btn-decrease">-</button>
+                                                                            </div>
+                                                                            
+                                                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="${item.quantity}">
+                                                                            
+                                                                            <div class="inc qtybutton">
+                                                                                <button data-id="${item.id}" class="btn btn-increase">+</button>
+                                                                            </div>
+                                                                    
+                                                                    </div>
+                                                                    <div class="total-price">${item.price * item.quantity } VNĐ</div>
                                                                 </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                                    <div class="inc qtybutton">+</div>
-                                                                <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="#"><img src="../../assets/images/product/02.jpg" alt=""></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                                    <div class="inc qtybutton">+</div>
-                                                                <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="#"><img src="../../assets/images/product/03.jpg" alt=""></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                                    <div class="inc qtybutton">+</div>
-                                                                <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="#"><img src="../../assets/images/product/04.jpg" alt=""></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                                                    <div class="inc qtybutton">+</div>
-                                                                <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
+                                                    
+                                                    
+                                                    `).join("") : `
+                                                        <tr class="flex justify-center">
+                                                            <td class="text-center" colspan="4">Không Có Sản Phẩm Nào!</td>
+                                                        </tr>
+                                                    `}
+                                                    
+                                                    
+                                                    
+                                                    
                                                 </div>
                                             </div>
                                             <div class="cart-scr-bottom">
                                                 <ul>
                                                     <li>
                                                         <div class="title">Tổng Cộng</div>
-                                                        <div class="price">Tk. 1045.00</div>
+                                                        <div class="price">${totalProduct}</div>
                                                     </li>
                                                     <li>
                                                         <div class="title">Shipping</div>
-                                                        <div class="price">Tk. 40.00</div>
+                                                        <div class="price">${3000}</div>
                                                     </li>
                                                     <li>
                                                         <div class="title">Tổng Giỏ Hàng</div>
-                                                        <div class="price">Tk. 1085.00</div>
+                                                        <div class="price">${totalProduct + 3000}</div>
                                                     </li>
                                                 </ul>
-                                                <a href="./cart-page.html" class="food-btn"><span>Thanh Toán</span></a>
+                                                <a href="/cart" class="food-btn"><span>Thanh Toán</span></a>
                                             </div>
                                         </div>
                                     </li>
@@ -284,29 +248,48 @@ const HeaderPage = {
         //     })
 
         // }
-        var CartPlusMinus = $('.cart-plus-minus');
-        CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
-        CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-        $(".qtybutton").on("click", function () {
-            var $button = $(this);
-            var oldValue = $button.parent().find("input").val();
-            if ($button.text() === "+") {
-                var newVal = parseFloat(oldValue) + 1;
-            } else {
-                // Don't allow decrementing below zero
-                if (oldValue > 0) {
-                    var newVal = parseFloat(oldValue) - 1;
+
+        // var CartPlusMinus = $('.cart-plus-minus');
+        // CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
+        // CartPlusMinus.append('<div class="inc qtybutton">+</div>');
+        // $(".qtybutton").on("click", function () {
+        //     var $button = $(this);
+        //     var oldValue = $button.parent().find("input").val();
+        //     if ($button.text() === "+") {
+        //         var newVal = parseFloat(oldValue) + 1;
+        //     } else {
+        //         // Don't allow decrementing below zero
+        //         if (oldValue > 0) {
+        //             var newVal = parseFloat(oldValue) - 1;
+        //         } else {
+        //             newVal = 1;
+        //         }
+        //     }
+        //     $button.parent().find("input").val(newVal);
+        // });
+
+        document.querySelectorAll(".btn").forEach(btn => {
+            const id = btn.dataset.id;
+            btn.addEventListener('click', function(){
+                console.log(id);
+                if(btn.classList.contains('btn-increase')){
+                    increaseQty(id, () => reRender(HeaderPage, "#cart"));
+                } else if(btn.classList.contains('btn-decrease')){
+                    decreaseQty(id, () => reRender(HeaderPage, "#cart"));
                 } else {
-                    newVal = 1;
+                    removeItemInCart(id, () => {
+                        reRender(HeaderPage, "#cart");
+                        toastr.success("Bạn đã xóa thành công")
+                    })
                 }
-            }
-            $button.parent().find("input").val(newVal);
-        });
-        const btnLogout = document.querySelector("#logout");
-            btnLogout.addEventListener('click', function(){
-                localStorage.removeItem('user');
-                reRender(HeaderPage , "#header")
             })
+        }) 
+
+        const btnLogout = document.querySelector("#logout");
+        btnLogout.addEventListener('click', function () {
+            localStorage.removeItem('user');
+            reRender(HeaderPage, "#header")
+        })
 
 
 

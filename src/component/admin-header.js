@@ -130,10 +130,18 @@ const AdminHeader = {
             </a>
           </li>
           <li class="nav-item">
-            <a href="./index2.html" class="nav-link">
+            <a href="/admin/news" class="nav-link">
               
               <i class="far fa-newspaper nav-icon"></i>
               <p>Quản trị Tin Tức </p>
+              <span class="badge badge-info right">20</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/carts" class="nav-link">
+              
+              <i class="far fa-newspaper nav-icon"></i>
+              <p>Quản trị Đơn Hàng </p>
               <span class="badge badge-info right">20</span>
             </a>
           </li>

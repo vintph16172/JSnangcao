@@ -12,7 +12,7 @@ import ContactPage from "./pages/contact"
 import ReservPage from "./pages/reserv"
 import NewsPage from "./pages/news"
 import ProductSortPage from "./pages/product-sort";
-
+import CartPage from "./pages/cart";
 // -----FRONT-END-------
 import AdminPage from "./pages/admin/admin-dashbroad";
 import AdminNews from "./pages/admin/news/admin-news";
@@ -28,6 +28,9 @@ import AdminProductsEdit from "./pages/admin/products/admin-product-edit"
 import AdminCategoryProducts from "./pages/admin/categoryProducts/admin-categoryProducts";
 import AdminCategoryProductsEdit from "./pages/admin/categoryProducts/admin-categoryProducts-edit";
 import AdminCategoryProductsAdd from "./pages/admin/categoryProducts/admin-categoryProducts-add";
+
+import AdminCarts from "./pages/admin/carts/admin-cart";
+import AdminDetailCarts from "./pages/admin/carts/admin-cart-detail";
 // -----BACK-END-------
 
 // **********************PAGE********************
@@ -45,9 +48,9 @@ router.on("/admin/*", () => {}, {
     before(done, match) {
       // do something
         if(localStorage.getItem('user')){
-            const userId = JSON.parse(localStorage.getItem('user')).id;
+            const userId = JSON.parse(localStorage.getItem('user')).permission;
             
-            if(userId === 1){
+            if(userId == 1){
                 done();     
             } else {
                 document.location.href="/";
@@ -71,6 +74,10 @@ router.on({
     },
     "/product": () => {
         print(ProductPage);
+        
+    },
+    "/cart": () => {
+        print(CartPage);
         
     },
     "/product/sort/:min&:max": (value) => {
@@ -164,6 +171,13 @@ router.on({
     "/admin/users/:id/edit": (value) => {
         print(AdminUsersEdit,value.data.id);
     },
+    "/admin/carts": () => {
+        print(AdminCarts);
+    },
+    "/admin/carts/detail/:id": (value) => {
+        print(AdminDetailCarts,value.data.id);
+    },
+    
 
     
 })

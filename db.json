@@ -142,6 +142,108 @@
       "status": 1
     }
   ],
+  "coupons": [
+    {
+      "id": 1,
+      "code": "sale50",
+      "sale": "50"
+    },
+    {
+      "id": 2,
+      "code": "sale100",
+      "sale": "100"
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "productId": [
+        {
+          "id": 8,
+          "quantity": 2
+        },
+        {
+          "id": 7,
+          "quantity": 3
+        }
+      ],
+      "couponId": 0,
+      "total": 800000,
+      "name": "vipro292002",
+      "email": "vipro292002@gmail.com",
+      "phone": "261561651",
+      "address": "abc",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "productId": [
+        {
+          "id": 8,
+          "quantity": 2
+        },
+        {
+          "id": 7,
+          "quantity": 3
+        }
+      ],
+      "couponId": 1,
+      "total": 800000,
+      "name": "vipro292002",
+      "email": "vipro292002@gmail.com",
+      "phone": "261561651",
+      "address": "abc",
+      "status": 0
+    },
+    {
+      "productId": [
+        {
+          "id": 8,
+          "quantity": 3
+        },
+        {
+          "id": 7,
+          "quantity": 4
+        },
+        {
+          "id": 6,
+          "quantity": 1
+        }
+      ],
+      "couponId": 1,
+      "total": 855000,
+      "name": "vintph16172",
+      "email": "vipro292002@gmail.com",
+      "phone": "11998001001",
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "status": 0,
+      "id": 3
+    },
+    {
+      "productId": [
+        {
+          "id": 8,
+          "quantity": 3
+        },
+        {
+          "id": 7,
+          "quantity": 4
+        },
+        {
+          "id": 6,
+          "quantity": 1
+        }
+      ],
+      "couponId": 0,
+      "total": 1710000,
+      "name": "vintph16172",
+      "email": "vipro292002@gmail.com",
+      "phone": "11998001001",
+      "address": "41 Ngõ 285 Đội Cấn,Ba Đình",
+      "status": 0,
+      "id": 4
+    }
+  ],
   "users": [
     {
       "avatar": "https://picsum.photos/200/200",

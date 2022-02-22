@@ -6,31 +6,37 @@ import HeaderPage from "../component/header";
 import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
-import {  getAllProductCate } from "../api/product"
+import { addToCart } from "../../utils/cart";
+import { get,getAllProductCate } from "../api/product"
+import { $ } from "../../utils/selector";
+import { reRender } from "../../utils/reRender"
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 
 const DetailProductPage = {
-    async render(id){
+    async render(id) {
+        console.log(id);
         const { data } = await getAllProductCate();
         const data2 = []
         const relateProduct = [];
         const arr = []
         console.log(data);
-        data.map((p)=>{
-            if(p.id == id){
+        data.map((p) => {
+            if (p.id == id) {
                 data2.push(p)
             }
         })
         console.log(data2);
-        data.map((h)=>{
-            if(h.category === data2[0].category){
+        data.map((h) => {
+            if (h.category === data2[0].category) {
                 arr.push(h)
             }
-            
+
         })
         console.log(data2[0]);
         console.log(arr);
 
-        for(let i = 1;i<=4;i++){
+        for (let i = 1; i <= 4; i++) {
             relateProduct.push(arr[arr.length - i])
         }
         console.log(relateProduct);
@@ -146,9 +152,24 @@ const DetailProductPage = {
                                             <h5>$${data2[0].price} VNĐ</h5>
                                             <p>Số Lượng</p>
                                             <label>
-                                                <input type="number" value="1" min="1">
+
+                                                <button data-id="${data2[0].id}" class="btn2 btn-increase2 text-gray-500 focus:outline-none focus:text-gray-600">
+                                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                    </svg>
+                                                </button>
+
+                                                <input type="number" id="inputQty" value="1" min="1">
+
+                                                <button data-id="${data2[0].id}" class="btn2 btn-decrease2 text-gray-500 focus:outline-none focus:text-gray-600">
+                                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                    </svg>
+                                                </button>
                                             </label>
-                                            <a href="#" class="food-btn style-2"><span>Đặt Hàng</span></a>
+                                            <button id="btnAddToCart" class="food-btn style-2"><span>Đặt Hàng</span></button>
                                             <ul>
                                                 <li><a href="#"><i class="icofont-heart-alt"></i>Wishlist</a></li>
                                                 <li><a href="#"><i class="icofont-drag2"></i>So Sánh</a></li>
@@ -187,10 +208,10 @@ const DetailProductPage = {
                             <div class="products">
                                 <div class="section-wrapper">
                                     <div class="row justify-content-center align-items-center">
-                                        ${relateProduct.map((product)=>/*html*/`
+                                        ${relateProduct.map((product) =>/*html*/`
                                         <div class="col-xl-3 col-md-6 col-12">
                                             <div class="product-item">
-                                                <a href="./detail-product.html">
+                                                <a href="/products/detail/${product.id}">
                                                     <div class="product-thumb">
                                                         <img src="${product.image}" alt="food-product">
                                                         <span class="price">${product.sale}%</span>
@@ -387,11 +408,30 @@ const DetailProductPage = {
 
         `;
     },
-    afterRender(){
+    afterRender(id) {
         Cart.afterRender()
         HeaderPage.afterRender()
+        $('#btnAddToCart').addEventListener('click', async function () {
+            const { data } = await get(id);
+            addToCart({ ...data, quantity: 1 }, () => {
+                toastr.success("Thêm thành công!");
+                reRender(HeaderPage, "#cart")
+              });
+        })
+        $(".btn2").forEach(btn => {
+            const id = btn.dataset.id;
+            btn.addEventListener('click', function () {
+                console.log(id);
+                if (btn.classList.contains('btn-increase2')) {
+                    $("#inputQty").value++
+                } else if (btn.classList.contains('btn-decrease2')) {
+                    $("#inputQty").value--
+                }
+            })
+        })
+
     }
-    
+
 
 
 

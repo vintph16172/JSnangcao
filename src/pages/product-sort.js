@@ -7,23 +7,9 @@ import {getAllCateProduct} from "../api/cateProduct"
 
 const ProductSortPage = {
     async render(value){
-        console.log(value.min);
-        const url = window.location.href
-        console.log(url);
-        // console.log(url.search("price_gte"));
+        console.log(value);
         const { data } = await getAllProductCate();
-        // const mm = "http://localhost:3001/products/?price_gte=100000&price_lte=190000&_expand=categoryProduct"
-        // console.log(mm.search("price_gte"));
-        // if(mm.search("price_gte") !== -1){
-            
-        //     const regex = /=[0-9]{0,}/g;
-        //     const minMax = mm.match(regex).join("").replace(/=/g," ").split(" ")
-        //     // const pp = minMax
-        //     console.log(minMax);
-        //     const { data } = await getAllByPrice(minMax[1],minMax[2]);
-        //     console.log(data);
-        //     console.log(1);
-        // }
+       
         
         console.log(data);
         const  data2  = await getAllCateProduct();   
@@ -112,7 +98,7 @@ const ProductSortPage = {
                                     <ul class="widget-wrapper">
                                         ${arrPrice.map((price_sort)=>/*html*/`
                                             <li>
-                                                <a href="/product/${price_sort.min}&${price_sort.max}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${price_sort.min} - ${price_sort.max}</span><span>${price_sort.price_quantity}</span></a>
+                                                <a href="/product/sort/${price_sort.min}&${price_sort.max}" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>${price_sort.min} - ${price_sort.max}</span><span>${price_sort.price_quantity}</span></a>
                                             </li>
                                         
                                         `).join("")}
