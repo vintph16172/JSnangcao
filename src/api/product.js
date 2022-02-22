@@ -8,6 +8,10 @@ export const getAllProductCate = () => {
     const url = `/products/?_expand=categoryProduct`;
     return instance.get(url);
 }
+export const sortByName = (sort,order) => {
+    const url = `/products/?_sort=${sort}&_order=${order}`;
+    return instance.get(url);
+}
 export const getAllByPrice = (min,max) => {
     const url = `/products/?price_gte=${min}&price_lte=${max}&_expand=categoryProduct`;
     return instance.get(url);

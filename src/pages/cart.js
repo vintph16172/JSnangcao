@@ -42,6 +42,19 @@ const CartPage = {
         <div id="header">
             ${HeaderPage.render()}
         </div>
+        <!-- Page Header Section Start Here -->
+        <section class="page-header style-2">
+            <div class="container">
+                <div class="page-title text-center">
+                    <h3 class="text-4xl" style="color:#FBE202">Giỏ Hàng</h3>
+                    <ul class="breadcrumb">
+                        <li><a href="/" >Trang chủ</a></li>
+                        <li>Giỏ Hàng</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Page Header Section Ending Here -->
         
         <div class="flex justify-center my-6">
         <div class="flex flex-col w-full p-8 border border-lab1-blue text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -310,17 +323,17 @@ const CartPage = {
       },
       submitHandler: function () {
         async function addCart2() {
-          const productID =[]
-          
-          const a= JSON.parse(localStorage.getItem('cart'))
+          const productID = []
+
+          const a = JSON.parse(localStorage.getItem('cart'))
           let totalProduct = 0
           let totalCart = 0
-          a.map((product)=>{
+          a.map((product) => {
             const productCart = {
               id: product.id,
               quantity: product.quantity,
             }
-            productID.push(productCart )
+            productID.push(productCart)
             totalProduct += product.price * product.quantity
           })
           let shipping = 30000
@@ -335,23 +348,23 @@ const CartPage = {
 
           addCart({
             productId: productID,
-            couponId: localStorage.getItem("coupon")? JSON.parse(localStorage.getItem('coupon')).id :0 ,
+            couponId: localStorage.getItem("coupon") ? JSON.parse(localStorage.getItem('coupon')).id : 0,
             total: totalCart,
             name: document.querySelector('#cart-name').value,
             email: document.querySelector('#cart-email').value,
             phone: document.querySelector('#cart-phonenumber').value,
             address: document.querySelector('#cart-address').value,
             status: 0,
-            
+
 
           });
-          
+
 
           toastr.success("Thanh Toán Thành Công!")
-          // localStorage.removeItem("cart")
-          // localStorage.removeItem("coupon")
-          // window.location.assign("/#/")
-          
+          localStorage.removeItem("cart")
+          localStorage.removeItem("coupon")
+          window.location.assign("/#/")
+
         }
         addCart2();
       }
@@ -359,7 +372,7 @@ const CartPage = {
 
     // $("#payment").addEventListener("click", (a) => {
     //   a.preventDefault();
-      
+
 
     //   toastr.success("Thanh Toán Thành Công!")
     //   localStorage.removeItem("cart")
@@ -369,7 +382,7 @@ const CartPage = {
     document.querySelector("#form-coupon").addEventListener("submit", async (e) => {
       e.preventDefault();
       const { data } = await getAll();
-      const input =document.querySelector("#coupon").value
+      const input = document.querySelector("#coupon").value
       console.log(input);
       const code = data.filter((coupon) => coupon.code == input)
       console.log(code);

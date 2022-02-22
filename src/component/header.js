@@ -121,12 +121,12 @@ const HeaderPage = {
                                     <li><a href="/product">Sản Phẩm</a>
                                         
                                     </li>   
-                                    <li><a href="reserv.html">Đặt Bàn</a></li>
-                                    <li><a href="blog-2.html">Tin Tức</a>
+                                    <li><a href="/reserv">Đặt Bàn</a></li>
+                                    <li><a href="/news">Tin Tức</a>
                                         
                                     </li>
                                     
-                                    <li><a href="contact-us.html">Liên Hệ</a></li>
+                                    <li><a href="/contact">Liên Hệ</a></li>
                                 </ul>
                             </div>
                             <div class="cart-search">

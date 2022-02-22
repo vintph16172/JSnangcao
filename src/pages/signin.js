@@ -112,7 +112,7 @@ const SignInPage = {
 
                 alert("Đăng Nhập Thành Công!")
                 if (response.data.user.id === 1) {
-                    document.location.href = "/admin/news";
+                    document.location.href = "/admin/products";
                 } else {
                     document.location.href = "/";
                 }

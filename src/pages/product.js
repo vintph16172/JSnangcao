@@ -2,27 +2,27 @@ import HeaderPage from "../component/header";
 import FooterPage from "../component/footer";
 import axios from "axios";
 import Cart from "../component/cart";
-import {  getAll,getAllProductCate,getAllByPrice } from "../api/product"
+import {  getAll,getAllProductCate,getAllByPrice,sortByName } from "../api/product"
 import {getAllCateProduct} from "../api/cateProduct"
 
 const ProductPage = {
-    async render(){
-        const url = window.location.href
-        console.log(url);
-        console.log(url.search("price_gte"));
-        const { data } = await getAllProductCate();
-        const mm = "http://localhost:3001/products/?price_gte=100000&price_lte=190000&_expand=categoryProduct"
-        console.log(mm.search("price_gte"));
-        if(mm.search("price_gte") !== -1){
+    async render(value){
+        console.log(value);
+        async  function order(b){
+            let a =""
+            if(value){
+              a = await sortByName(value.sort,value.order)
+              console.log(a);   
+              return a;
+            }else{
+              a = await getAllProductCate()
+              console.log(a);
+              return a;
+            }
             
-            const regex = /=[0-9]{0,}/g;
-            const minMax = mm.match(regex).join("").replace(/=/g," ").split(" ")
-            // const pp = minMax
-            console.log(minMax);
-            const { data } = await getAllByPrice(minMax[1],minMax[2]);
-            console.log(data);
-            console.log(1);
         }
+        const { data } = await order(value);
+        
         
         console.log(data);
         const  data2  = await getAllCateProduct();    
@@ -100,6 +100,17 @@ const ProductPage = {
                                             </li>
                                         `).join("")}
                                         
+                                    </ul>
+                                </div>
+                                <div class="widget widget-category">
+                                    <div class="widget-header">
+                                        <h5>Sắp xếp theo Tên</h5>
+                                    </div>
+                                    <ul class="widget-wrapper">
+                                        <li>
+                                            <a href="/products/sortName/name&asc" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-double-right"></i>A-Z</span><span></span></a>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="widget widget-category">
@@ -213,7 +224,7 @@ const ProductPage = {
                                                     </div>
                                                     <div class="product-content">
                                                         <div class="product-title">
-                                                            <span class="cat-name">${product.categoryProduct.name}</span>
+                                                            <span class="cat-name">${product.id}</span>
                                                             <h6><a href="products/${product.id}">${product.name}</a></h6>
                                                             <div class="rating">
                                                                 <i class="icofont-star"></i>

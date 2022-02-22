@@ -27,7 +27,7 @@ const ProductSortPage = {
         
         data.map((v)=>{
             arrPrice.map((i)=>{
-                if((i.min < v.price) && (v.price <= i.max)){
+                if((i.min <= v.price) && (v.price <= i.max)){
                     i.price_quantity = i.price_quantity + 1
                 } 
             })

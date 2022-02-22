@@ -76,6 +76,11 @@ router.on({
         print(ProductPage);
         
     },
+    "/products/sortName/:sort&:order": (value) => {
+        console.log(value.data);
+        print(ProductPage,value.data);
+        
+    },
     "/cart": () => {
         print(CartPage);
         
